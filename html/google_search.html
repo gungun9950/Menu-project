@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <link rel="icon" href="data:,">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-gray-900 to-gray-600 text-white flex flex-col items-center justify-center min-h-screen p-4">
+    <h2 class="text-3xl font-bold mb-6">Google Search</h2>
+    <div class="flex w-full max-w-md space-x-4">
+        <input type="text" id="searchQuery" placeholder="Enter your search query" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500 outline-none text-gray-300">
+        <button id="searchBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded font-semibold transition transform hover:scale-105">Search</button>
+    </div>
+    <div id="results" class="mt-6 w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg text-gray-300 space-y-4"></div>
+
+    <script>
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            var query = document.getElementById("searchQuery").value.trim();
+            if (query !== "") {
+                fetch('/cgi-bin/google_search.py?query=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+
+        function displayResults(results) {
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+            if (results) {
+                results.forEach(function(result, index) {
+                    var resultDiv = document.createElement("div");
+                    resultDiv.innerHTML = `
+                        <h3 class="text-xl font-semibold">Result ${index + 1}:</h3>
+                        <p class="text-lg">Title: ${result.title}</p>
+                        <p class="text-lg">Link: <a href="${result.link}" target="_blank" class="text-blue-400 underline">${result.link}</a></p>
+                        <p class="text-lg">Snippet: ${result.snippet}</p>
+                    `;
+                    resultsDiv.appendChild(resultDiv);
+                });
+            } else {
+                resultsDiv.textContent = "Failed to retrieve search results.";
+            }
+        }
+    </script>
+</body>
+
+</html>

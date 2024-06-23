@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-gray-900 to-gray-600 text-white flex flex-col items-center justify-center min-h-screen m-0">
+    <h1 class="text-5xl font-bold mb-8">Welcome to Menu Project</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Google Search</h2>
+            <p class="mb-4">Search the web with Google.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="goToGoogleSearch()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Send Bulk Email</h2>
+            <p class="mb-4">Send emails to multiple recipients at once.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="sendBulkEmail()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Geo Coordinates</h2>
+            <p class="mb-4">Get your current geographical coordinates.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="geoCoordinates()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Docker Kesari</h2>
+            <p class="mb-4">Manage Docker containers.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="dockerfun()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Launch AWS Instance</h2>
+            <p class="mb-4">Launch a new AWS EC2 instance.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="launchInstance()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Get Logs</h2>
+            <p class="mb-4">Retrieve logs from your application.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="getLogs()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Get EC2 Metrics</h2>
+            <p class="mb-4">View metrics for your EC2 instances.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="getMetrics()">Go</button>
+        </div>
+
+        <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">File Management</h2>
+            <p class="mb-4">Manage your files easily.</p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="goToFileManagement()">Go</button>
+        </div>
+         <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+<h2 class="text-xl font-bold mb-4">Docker</h2>                                                                 <p class="mb-4">Docker Command Executor.</p>                                                                           <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="docker2fun()">Go</button>
+        </div>
+         <div class="card bg-gray-800 p-6 rounded-lg shadow-lg">
+<h2 class="text-xl font-bold mb-4">Live Interpreter</h2>                                                                 <p class="mb-4">Live HTML INTERPRETER.</p>                                                                           <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onclick="htmlinterfun()">Go</button>                           </div>
+    </div>
+
+    <script>
+        function goToGoogleSearch() {
+            window.location.href = "google_search.html";
+        }
+
+        function sendBulkEmail() {
+            window.location.href = "send_bulk_email.html";
+        }
+
+        function geoCoordinates() {
+            window.location.href = "geo_coordinates.html";
+        }
+
+        function dockerfun() {
+            window.location.href = "docker.html";
+        }
+
+        function launchInstance() {
+            window.location.href = "launch_instance.html";
+        }
+
+        function getLogs() {
+            window.location.href = "get_logs.html";
+        }
+
+        function getMetrics() {
+            window.location.href = "get_ec2_metrics.html";
+        }
+
+        function goToFileManagement() {
+            window.location.href = "file_management.html";
+        }
+        function docker2fun() {
+            window.location.href = "linux.html";
+        }
+        function htmlinterfun() {
+            window.location.href = "html_live_interpreter.html";
+        }
+    </script>
+</body>
+
+</html>

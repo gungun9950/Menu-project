@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live HTML Interpreter</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .editor {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-teal-500 text-white p-4 shadow-md flex items-center justify-between w-full ">
+        <button class="bg-transparent border-none text-white text-lg cursor-pointer px-4 py-2 rounded hover:bg-white hover:bg-opacity-10" onclick="goToHome()">Home</button>
+        <h1 class="text-2xl font-bold mx-auto ">Live HTML Interpreter</h1>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1 flex">
+        <div class="w-1/2 p-4 border-r border-gray-700 overflow-y-auto">
+            <div class="editor bg-gray-800 p-4 rounded-md shadow-md" contenteditable="true" id="htmlInput">
+                <!-- Initial HTML content -->
+                <h2 class="text-lg font-semibold">Type your HTML code here:</h2>
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html lang="en"&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&lt;meta charset="UTF-8"&gt;</p>
+                <p>&lt;title&gt;Live HTML Interpreter&lt;/title&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&lt;h1&gt;Hello, World!&lt;/h1&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div>
+        </div>
+        <div class="w-1/2 p-4 overflow-y-auto">
+            <div id="htmlOutput" class="bg-gray-800 p-4 rounded-md shadow-md"></div>
+        </div>
+    </main>
+
+    <script>
+        // Function to update output with user input HTML
+        function updateOutput() {
+            var htmlInput = document.getElementById('htmlInput').innerText;
+            var htmlOutput = document.getElementById('htmlOutput');
+            htmlOutput.innerHTML = htmlInput;
+        }
+
+        // Update output on input change
+        document.getElementById('htmlInput').addEventListener('input', updateOutput);
+
+        // Function to navigate to Home page
+        function goToHome() {
+            window.location.href = "index.html"; // Change index.html to your home page
+        }
+
+        // Initialize the output on page load
+        window.onload = updateOutput;
+    </script>
+</body>
+</html>
