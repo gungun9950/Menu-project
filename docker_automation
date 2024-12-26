@@ -1,0 +1,110 @@
+#!/bin/bash
+
+while true; do
+    echo "================================="
+    echo "       Docker Automation Menu    "
+    echo "================================="
+    echo "1. Show All Images"
+    echo "2. Show All Containers"
+    echo "3. Pull an Image"
+    echo "4. Run an Image (Interactive Mode)"
+    echo "5. Start a Container"
+    echo "6. Stop a Container"
+    echo "7. Delete a Container"
+    echo "8. Delete an Image"
+    echo "9. Show Running Containers"
+    echo "10. Attach to a Container"
+    echo "11. View Container Logs"
+    echo "12. Pause a Container"
+    echo "13. Unpause a Container"
+    echo "14. Inspect a Container"
+    echo "15. Inspect an Image"
+    echo "16. Export a Container"
+    echo "17. Exit"
+    echo "================================="
+
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1)
+            echo "\nAll Images:"
+            docker images
+            ;;
+        2)
+            echo "\nAll Containers:"
+            docker ps -a
+            ;;
+        3)
+            read -p "Enter the image name to pull (e.g., ubuntu:latest): " image_name
+            docker pull "$image_name"
+            echo "Image '$image_name' pulled successfully."
+            ;;
+        4)
+            read -p "Enter the image name to run in interactive mode: " image_name
+            docker run -it "$image_name"
+            ;;
+        5)
+            read -p "Enter the container name or ID to start: " container_id
+            docker start "$container_id"
+            echo "Container '$container_id' started successfully."
+            ;;
+        6)
+            read -p "Enter the container name or ID to stop: " container_id
+            docker stop "$container_id"
+            echo "Container '$container_id' stopped successfully."
+            ;;
+        7)
+            read -p "Enter the container name or ID to delete: " container_id
+            docker rm "$container_id"
+            echo "Container '$container_id' deleted successfully."
+            ;;
+        8)
+            read -p "Enter the image name or ID to delete: " image_name
+            docker rmi "$image_name"
+            echo "Image '$image_name' deleted successfully."
+            ;;
+        9)
+            echo "\nRunning Containers:"
+            docker ps
+            ;;
+        10)
+            read -p "Enter the container name or ID to attach: " container_id
+            docker attach "$container_id"
+            ;;
+        11)
+            read -p "Enter the container name or ID to view logs: " container_id
+            docker logs "$container_id"
+            ;;
+        12)
+            read -p "Enter the container name or ID to pause: " container_id
+            docker pause "$container_id"
+            echo "Container '$container_id' paused successfully."
+            ;;
+        13)
+            read -p "Enter the container name or ID to unpause: " container_id
+            docker unpause "$container_id"
+            echo "Container '$container_id' unpaused successfully."
+            ;;
+        14)
+            read -p "Enter the container name or ID to inspect: " container_id
+            docker inspect "$container_id"
+            ;;
+        15)
+            read -p "Enter the image name or ID to inspect: " image_name
+            docker inspect "$image_name"
+            ;;
+        16)
+            read -p "Enter the container name or ID to export: " container_id
+            read -p "Enter the output file name (e.g., container.tar): " output_file
+            docker export "$container_id" > "$output_file"
+            echo "Container '$container_id' exported successfully to '$output_file'."
+            ;;
+        17)
+            echo "Exiting the script. Goodbye!"
+            break
+            ;;
+        *)
+            echo "Invalid choice. Please select a valid option."
+            ;;
+    esac
+done
